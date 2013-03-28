@@ -9,8 +9,14 @@ class Prediction extends ConsoleClient {
   TrainingResource _training;
   TrainingResource get training => _training;
 
+  /** OAuth Scope2: Manage your data and permissions in Google Cloud Storage */
+  static const String DEVSTORAGE_FULL_CONTROL_SCOPE = "https://www.googleapis.com/auth/devstorage.full_control";
+
   /** OAuth Scope2: View your data in Google Cloud Storage */
   static const String DEVSTORAGE_READ_ONLY_SCOPE = "https://www.googleapis.com/auth/devstorage.read_only";
+
+  /** OAuth Scope2: Manage your data in Google Cloud Storage */
+  static const String DEVSTORAGE_READ_WRITE_SCOPE = "https://www.googleapis.com/auth/devstorage.read_write";
 
   /** OAuth Scope2: Manage your data in the Google Prediction API */
   static const String PREDICTION_SCOPE = "https://www.googleapis.com/auth/prediction";
@@ -103,7 +109,7 @@ class Prediction extends ConsoleClient {
     }
 
     var response;
-    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    response = this.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
     response
       .then((data) => completer.complete(new Output.fromJson(data)))
       .catchError((e) { completer.completeError(e); return true; });
