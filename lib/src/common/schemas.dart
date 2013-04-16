@@ -4,15 +4,15 @@ class Input {
   InputInput input;
 
   /** Create new Input from JSON data */
-  Input.fromJson(Map json) {
+  Input.fromJson(core.Map json) {
     if (json.containsKey("input")) {
       input = new InputInput.fromJson(json["input"]);
     }
   }
 
   /** Create JSON Object for Input */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (input != null) {
       output["input"] = input.toJson();
@@ -22,39 +22,39 @@ class Input {
   }
 
   /** Return String representation of Input */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class InputInput {
 
   /** Create new InputInput from JSON data */
-  InputInput.fromJson(Map json) {
+  InputInput.fromJson(core.Map json) {
   }
 
   /** Create JSON Object for InputInput */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
 
     return output;
   }
 
   /** Return String representation of InputInput */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class Output {
-  String id;
-  String kind;
-  String outputLabel;
-  List<OutputOutputMulti> outputMulti;
-  num outputValue;
-  String selfLink;
+  core.String id;
+  core.String kind;
+  core.String outputLabel;
+  core.List<OutputOutputMulti> outputMulti;
+  core.num outputValue;
+  core.String selfLink;
 
   /** Create new Output from JSON data */
-  Output.fromJson(Map json) {
+  Output.fromJson(core.Map json) {
     if (json.containsKey("id")) {
       id = json["id"];
     }
@@ -79,8 +79,8 @@ class Output {
   }
 
   /** Create JSON Object for Output */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (id != null) {
       output["id"] = id;
@@ -92,7 +92,7 @@ class Output {
       output["outputLabel"] = outputLabel;
     }
     if (outputMulti != null) {
-      output["outputMulti"] = new List();
+      output["outputMulti"] = new core.List();
       outputMulti.forEach((item) {
         output["outputMulti"].add(item.toJson());
       });
@@ -108,16 +108,16 @@ class Output {
   }
 
   /** Return String representation of Output */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class OutputOutputMulti {
-  String label;
-  num score;
+  core.String label;
+  core.num score;
 
   /** Create new OutputOutputMulti from JSON data */
-  OutputOutputMulti.fromJson(Map json) {
+  OutputOutputMulti.fromJson(core.Map json) {
     if (json.containsKey("label")) {
       label = json["label"];
     }
@@ -127,8 +127,8 @@ class OutputOutputMulti {
   }
 
   /** Create JSON Object for OutputOutputMulti */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (label != null) {
       output["label"] = label;
@@ -141,19 +141,19 @@ class OutputOutputMulti {
   }
 
   /** Return String representation of OutputOutputMulti */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class Training {
-  String id;
-  String kind;
+  core.String id;
+  core.String kind;
   TrainingModelInfo modelInfo;
-  String selfLink;
-  String trainingStatus;
+  core.String selfLink;
+  core.String trainingStatus;
 
   /** Create new Training from JSON data */
-  Training.fromJson(Map json) {
+  Training.fromJson(core.Map json) {
     if (json.containsKey("id")) {
       id = json["id"];
     }
@@ -172,8 +172,8 @@ class Training {
   }
 
   /** Create JSON Object for Training */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (id != null) {
       output["id"] = id;
@@ -195,17 +195,17 @@ class Training {
   }
 
   /** Return String representation of Training */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class TrainingModelInfo {
-  num classificationAccuracy;
-  num meanSquaredError;
-  String modelType;
+  core.num classificationAccuracy;
+  core.num meanSquaredError;
+  core.String modelType;
 
   /** Create new TrainingModelInfo from JSON data */
-  TrainingModelInfo.fromJson(Map json) {
+  TrainingModelInfo.fromJson(core.Map json) {
     if (json.containsKey("classificationAccuracy")) {
       classificationAccuracy = json["classificationAccuracy"];
     }
@@ -218,8 +218,8 @@ class TrainingModelInfo {
   }
 
   /** Create JSON Object for TrainingModelInfo */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (classificationAccuracy != null) {
       output["classificationAccuracy"] = classificationAccuracy;
@@ -235,25 +235,25 @@ class TrainingModelInfo {
   }
 
   /** Return String representation of TrainingModelInfo */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class Update {
 
   /** The true class label of this instance */
-  String classLabel;
+  core.String classLabel;
 
   /** Create new Update from JSON data */
-  Update.fromJson(Map json) {
+  Update.fromJson(core.Map json) {
     if (json.containsKey("classLabel")) {
       classLabel = json["classLabel"];
     }
   }
 
   /** Create JSON Object for Update */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (classLabel != null) {
       output["classLabel"] = classLabel;
@@ -263,7 +263,7 @@ class Update {
   }
 
   /** Return String representation of Update */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
