@@ -15,7 +15,6 @@ class HostedmodelsResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Output> predict(Input request, core.String hostedModelName, {core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "hostedmodels/{hostedModelName}/predict";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -32,16 +31,13 @@ class HostedmodelsResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Output.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Output.fromJson(data));
   }
 }
 
@@ -58,7 +54,6 @@ class TrainingResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<core.Map> delete(core.String data, {core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "training/{data}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -75,16 +70,12 @@ class TrainingResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "DELETE", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(data))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response;
   }
 
   /**
@@ -95,7 +86,6 @@ class TrainingResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Training> get(core.String data, {core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "training/{data}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -112,16 +102,13 @@ class TrainingResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Training.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Training.fromJson(data));
   }
 
   /**
@@ -134,7 +121,6 @@ class TrainingResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Training> insert(Training request, {core.String data, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "training";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -150,16 +136,13 @@ class TrainingResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Training.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Training.fromJson(data));
   }
 
   /**
@@ -172,7 +155,6 @@ class TrainingResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Training> update(Update request, core.String data, {core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "training/{data}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -189,16 +171,13 @@ class TrainingResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "PUT", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Training.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Training.fromJson(data));
   }
 }
 

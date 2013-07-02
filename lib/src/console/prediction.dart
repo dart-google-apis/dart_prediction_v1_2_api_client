@@ -87,7 +87,6 @@ class Prediction extends ConsoleClient {
    * [optParams] - Additional query parameters
    */
   async.Future<Output> predict(Input request, core.String data, {core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "training/{data}/predict";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -104,15 +103,12 @@ class Prediction extends ConsoleClient {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = this.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Output.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Output.fromJson(data));
   }
 }
