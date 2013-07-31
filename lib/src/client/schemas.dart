@@ -1,6 +1,7 @@
-part of prediction_v1_2_api_client;
+part of prediction_v1_2_api;
 
 class Input {
+
   InputInput input;
 
   /** Create new Input from JSON data */
@@ -28,14 +29,22 @@ class Input {
 
 class InputInput {
 
+  core.List<core.Object> csvInstance;
+
   /** Create new InputInput from JSON data */
   InputInput.fromJson(core.Map json) {
+    if (json.containsKey("csvInstance")) {
+      csvInstance = json["csvInstance"].toList();
+    }
   }
 
   /** Create JSON Object for InputInput */
   core.Map toJson() {
     var output = new core.Map();
 
+    if (csvInstance != null) {
+      output["csvInstance"] = csvInstance.toList();
+    }
 
     return output;
   }
@@ -46,11 +55,17 @@ class InputInput {
 }
 
 class Output {
+
   core.String id;
+
   core.String kind;
+
   core.String outputLabel;
+
   core.List<OutputOutputMulti> outputMulti;
+
   core.num outputValue;
+
   core.String selfLink;
 
   /** Create new Output from JSON data */
@@ -65,10 +80,7 @@ class Output {
       outputLabel = json["outputLabel"];
     }
     if (json.containsKey("outputMulti")) {
-      outputMulti = [];
-      json["outputMulti"].forEach((item) {
-        outputMulti.add(new OutputOutputMulti.fromJson(item));
-      });
+      outputMulti = json["outputMulti"].map((outputMultiItem) => new OutputOutputMulti.fromJson(outputMultiItem)).toList();
     }
     if (json.containsKey("outputValue")) {
       outputValue = json["outputValue"];
@@ -92,10 +104,7 @@ class Output {
       output["outputLabel"] = outputLabel;
     }
     if (outputMulti != null) {
-      output["outputMulti"] = new core.List();
-      outputMulti.forEach((item) {
-        output["outputMulti"].add(item.toJson());
-      });
+      output["outputMulti"] = outputMulti.map((outputMultiItem) => outputMultiItem.toJson()).toList();
     }
     if (outputValue != null) {
       output["outputValue"] = outputValue;
@@ -113,7 +122,9 @@ class Output {
 }
 
 class OutputOutputMulti {
+
   core.String label;
+
   core.num score;
 
   /** Create new OutputOutputMulti from JSON data */
@@ -146,10 +157,15 @@ class OutputOutputMulti {
 }
 
 class Training {
+
   core.String id;
+
   core.String kind;
+
   TrainingModelInfo modelInfo;
+
   core.String selfLink;
+
   core.String trainingStatus;
 
   /** Create new Training from JSON data */
@@ -200,8 +216,11 @@ class Training {
 }
 
 class TrainingModelInfo {
+
   core.num classificationAccuracy;
+
   core.num meanSquaredError;
+
   core.String modelType;
 
   /** Create new TrainingModelInfo from JSON data */
@@ -244,10 +263,16 @@ class Update {
   /** The true class label of this instance */
   core.String classLabel;
 
+  /** The input features for this instance */
+  core.List<core.Object> csvInstance;
+
   /** Create new Update from JSON data */
   Update.fromJson(core.Map json) {
     if (json.containsKey("classLabel")) {
       classLabel = json["classLabel"];
+    }
+    if (json.containsKey("csvInstance")) {
+      csvInstance = json["csvInstance"].toList();
     }
   }
 
@@ -258,6 +283,9 @@ class Update {
     if (classLabel != null) {
       output["classLabel"] = classLabel;
     }
+    if (csvInstance != null) {
+      output["csvInstance"] = csvInstance.toList();
+    }
 
     return output;
   }
@@ -267,3 +295,16 @@ class Update {
 
 }
 
+core.Map _mapMap(core.Map source, [core.Object convert(core.Object source) = null]) {
+  assert(source != null);
+  var result = new dart_collection.LinkedHashMap();
+  source.forEach((core.String key, value) {
+    assert(key != null);
+    if(convert == null) {
+      result[key] = value;
+    } else {
+      result[key] = convert(value);
+    }
+  });
+  return result;
+}
