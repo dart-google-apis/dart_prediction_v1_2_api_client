@@ -23,7 +23,7 @@ class Input {
   }
 
   /** Return String representation of Input */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -50,7 +50,7 @@ class InputInput {
   }
 
   /** Return String representation of InputInput */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -117,7 +117,7 @@ class Output {
   }
 
   /** Return String representation of Output */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -152,7 +152,7 @@ class OutputOutputMulti {
   }
 
   /** Return String representation of OutputOutputMulti */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -211,7 +211,7 @@ class Training {
   }
 
   /** Return String representation of Training */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -254,7 +254,7 @@ class TrainingModelInfo {
   }
 
   /** Return String representation of TrainingModelInfo */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -291,7 +291,7 @@ class Update {
   }
 
   /** Return String representation of Update */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
